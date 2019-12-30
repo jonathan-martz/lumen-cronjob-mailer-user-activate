@@ -56,7 +56,6 @@ class EmailUserActivateCommand extends Command
                     );
                     Mail::to($user->getAttribute('email'))
                         ->send(new RegisterUser($user->getAttribute('email'), $token, $user->getAttribute('email')));
-                    var_dump('Mail send.');
                 }
             }
         }
