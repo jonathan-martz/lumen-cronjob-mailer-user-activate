@@ -23,7 +23,7 @@ class CronjobUserActivateProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../migration');
         $this->loadViewsFrom(__DIR__ . '/../resources/views/emails', 'emails');
     }
 }
