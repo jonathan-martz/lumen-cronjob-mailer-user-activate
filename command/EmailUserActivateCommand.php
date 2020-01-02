@@ -8,6 +8,10 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * Class EmailUserActivateCommand
+ * @package App\Console\Commands
+ */
 class EmailUserActivateCommand extends Command
 {
     /**
@@ -34,18 +38,21 @@ class EmailUserActivateCommand extends Command
         parent::__construct();
     }
 
+    /**
+     *
+     */
     public function handle()
     {
         $users = DB::table('users')->where('active', '=', '0');
 
-        if ($users->count() !== 0) {
-            foreach ($users->get() as $key => $user) {
+        if($users->count() !== 0) {
+            foreach($users->get() as $key => $user) {
                 $user = new User((array)$user);
 
                 $tokens = DB::table('user_activate_token')
                     ->where('userid', '=', $user->getAuthIdentifier());
 
-                if ($tokens->count() === 0) {
+                if($tokens->count() === 0) {
                     $token = bin2hex(openssl_random_pseudo_bytes(256));
                     DB::table('user_activate_token')->insert(
                         [
