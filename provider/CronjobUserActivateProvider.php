@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class CronjobUserActivateProvider
+ * @package App\Providers
+ */
 class CronjobUserActivateProvider extends ServiceProvider
 {
     /**
